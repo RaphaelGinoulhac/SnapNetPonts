@@ -1,5 +1,5 @@
 # SnapNet for semantic segmentation of 3d points clouds
-By Raphaël GInoulhac (Ecole des Ponts et Chaussées, Paris, 2018).
+By Raphaël Ginoulhac (Ecole des Ponts et Chaussées, Paris, 2018).
 
 ## Introduction
 This project is a student fork of SnapNet, "Unstructured point cloud semantic labeling using deep segmentation networks", A.Boulch and B. Le Saux and N. Audebert, Eurographics Workshop on 3D Object Retrieval 2017.
