@@ -83,26 +83,26 @@ else: # testing filename
             # "stgallencathedral_station6_intensity_rgb"
         ]
 
-if create_views:
-
-    from python.viewGenerator import ViewGeneratorLauncher
-    from python.viewGenerator import ViewGeneratorNoDisplay as ViewGenerator
-
-    launcher = ViewGeneratorLauncher()
-
-    for filename in filenames:
-        print(filename)
-        view_gen = ViewGenerator()
-        view_gen.initialize_acquisition(
-                directory,
-                image_directory,
-                filename
-            )
-        view_gen.set_camera_generator(ViewGenerator.cam_generator_random_vertical_cone)
-        view_gen.opts["imsize"]= imsize
-        view_gen.generate_cameras_scales(cam_number, distances=[5,10,20])
-        view_gen.init()
-        launcher.launch(view_gen)
+# if create_views:
+#
+#     from python.viewGenerator import ViewGeneratorLauncher
+#     from python.viewGenerator import ViewGeneratorNoDisplay as ViewGenerator
+#
+#     launcher = ViewGeneratorLauncher()
+#
+#     for filename in filenames:
+#         print(filename)
+#         view_gen = ViewGenerator()
+#         view_gen.initialize_acquisition(
+#                 directory,
+#                 image_directory,
+#                 filename
+#             )
+#         view_gen.set_camera_generator(ViewGenerator.cam_generator_random_vertical_cone)
+#         view_gen.opts["imsize"]= imsize
+#         view_gen.generate_cameras_scales(cam_number, distances=[5,10,20])
+#         view_gen.init()
+#         launcher.launch(view_gen)
 
 
 if create_images:
