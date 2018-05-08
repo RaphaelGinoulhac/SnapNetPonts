@@ -1,7 +1,6 @@
 import numpy as np
 import os
 import scipy.misc
-from tqdm import *
 
 
 
@@ -66,7 +65,7 @@ if(config["training"]):
         ]
 else: # testing filename
     filenames = [
-            "birdfountain_station1_xyz_intensity_rgb",
+            #"birdfountain_station1_xyz_intensity_rgb",
             # "castleblatten_station1_intensity_rgb",
             # "castleblatten_station5_xyz_intensity_rgb",
             # "marketplacefeldkirch_station1_intensity_rgb",
@@ -150,13 +149,13 @@ if create_mesh:
             labelsColors = semantizer.get_labelsColors_numpy()
             np.savez(os.path.join(voxels_directory,filename+"_labelsColors").encode('utf_8'), labelsColors)
 
-
+""" commented out ViewGeneratorLauncher """
 if create_views:
 
-    from python.viewGenerator import ViewGeneratorLauncher
+    # from python.viewGenerator import ViewGeneratorLauncher
     from python.viewGenerator import ViewGeneratorNoDisplay as ViewGenerator
 
-    launcher = ViewGeneratorLauncher()
+    # launcher = ViewGeneratorLauncher()
 
     for filename in filenames:
         print(filename)
@@ -169,8 +168,8 @@ if create_views:
         view_gen.set_camera_generator(ViewGenerator.cam_generator_random_vertical_cone)
         view_gen.opts["imsize"]= imsize
         view_gen.generate_cameras_scales(cam_number, distances=[5,10,20])
-        view_gen.init()
-        launcher.launch(view_gen)
+        view_gen.paintGL()
+        # launcher.launch(view_gen)
 
 
 if create_images:
