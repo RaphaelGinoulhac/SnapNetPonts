@@ -1,6 +1,6 @@
 {
-    "train_input_dir":"/home/imagine/Documents/projet_class_3D/data_semantic-8",
-    "test_input_dir":"/home/imagine/Documents/projet_class_3D/data_semantic-8",
+    "train_input_dir":"/home/eleves/Documents/projet_class_3D/data_semantic-8",
+    "test_input_dir":"/home/eleves/Documents/projet_class_3D/data_semantic-8",
     "train_results_root_dir":"training_products",
     "test_results_root_dir":"test_products",
     "images_dir":"images",
