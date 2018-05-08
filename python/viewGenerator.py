@@ -17,7 +17,7 @@ from OpenGL.GLU import *
 import OpenGL.GL.shaders as shaders
 from OpenGL.arrays import vbo
 from OpenGL.GL.ARB.texture_buffer_object import *
-from PyQt5 import QtWidgets, QtCore, QtGui, QtOpenGL
+#from PyQt5 import QtWidgets, QtCore, QtGui, QtOpenGL
 
 import scipy.misc
 import pickle
@@ -26,24 +26,25 @@ import sys
 import numbers
 import copy
 from PIL import Image
+"""
+Commented out visualisation code
+"""
+#class ViewGeneratorLauncher:
+#
+#    def __init__(self):
+#        self.app = QtWidgets.QApplication([])
+#
+#    def launch(self,view_generator):
+#        self.view_generator = view_generator
+#        self.view_generator.show()
+#        self.app.exec_()
+#
+#    def exit(self):
+#        self.app.exit()
 
-class ViewGeneratorLauncher:
+class ViewGeneratorBase():
 
     def __init__(self):
-        self.app = QtWidgets.QApplication([])
-
-    def launch(self,view_generator):
-        self.view_generator = view_generator
-        self.view_generator.show()
-        self.app.exec_()
-
-    def exit(self):
-        self.app.exit()
-
-class ViewGeneratorBase(QtOpenGL.QGLWidget):
-
-    def __init__(self):
-        QtOpenGL.QGLWidget.__init__(self)
         # create options
         self.opts = {}
         self.opts["imsize"] = 128
@@ -143,11 +144,6 @@ class ViewGeneratorBase(QtOpenGL.QGLWidget):
         pickle.dump( self.cameras, open( os.path.join(self.dir_images, self.filename+"_cameras.p"), "wb" ) )
 
     def init(self):
-        self.resize(self.opts["imsize"], self.opts["imsize"])
-        self.t = time.time()
-        self._update_timer = QtCore.QTimer()
-        self._update_timer.timeout.connect(self.update)
-        self._update_timer.start(1e3 / 60.)
         self.program_close = False
 
     def lookAtFromCam(self, cam):
@@ -188,49 +184,49 @@ class ViewGeneratorBase(QtOpenGL.QGLWidget):
 
 
 
-class ViewGenerator(ViewGeneratorBase):
-    def __init__(self):
-        ViewGeneratorBase.__init__(self)
-
-    # render function
-    def paintGL(self):
-
-        # exit if all camera have been snapped
-        if self.count_camera >= len(self.cameras):
-            time.sleep(1)
-            self.program_close = True
-            self.close()
-        else:
-            glClear(GL_COLOR_BUFFER_BIT |GL_DEPTH_BUFFER_BIT)
-            glEnable(GL_DEPTH_TEST)
-            glLoadIdentity()
-
-            self.lookAtFromCam(self.cameras[self.count_camera])
-
-            # self.draw_points()
-            self.draw_mesh()
-
-            buffer = glReadPixels(0, 0, self.opts["imsize"], self.opts["imsize"], GL_RGB, GL_UNSIGNED_BYTE)
-            im = Image.frombytes(mode="RGB", size=(self.opts["imsize"], self.opts["imsize"]), data=buffer)
-            im = im.transpose(Image.FLIP_TOP_BOTTOM)
-            im = im.transpose(Image.FLIP_LEFT_RIGHT)
-
-            # image.save(os.path.join(self.view_directory, self.name+("_%04d" % self.count_camera)+".png"))
-            im.save(os.path.join(self.dir_images,"views", self.filename+("_%04d" % self.count_camera)+".png"))
-
-            im = np.asarray(im).copy()
-            im[:,:,0] *= 256*256
-            im[:,:,1] *= 256
-            im = im.sum(axis=2)
-            im -= 1 #we added 1 to handle the background
-
-            # save the matrix
-            np.savez(os.path.join(self.dir_images,"views", self.filename+("_%04d" % self.count_camera)), im)
-
-            self.count_camera += 1
-
-        self.update()
-        time.sleep(1)
+#class ViewGenerator(ViewGeneratorBase):
+#    def __init__(self):
+#        ViewGeneratorBase.__init__(self)
+#
+#    # render function
+#    def paintGL(self):
+#
+#        # exit if all camera have been snapped
+#        if self.count_camera >= len(self.cameras):
+#            time.sleep(1)
+#            self.program_close = True
+#            self.close()
+#        else:
+#            glClear(GL_COLOR_BUFFER_BIT |GL_DEPTH_BUFFER_BIT)
+#            glEnable(GL_DEPTH_TEST)
+#            glLoadIdentity()
+#
+#            self.lookAtFromCam(self.cameras[self.count_camera])
+#
+#            # self.draw_points()
+#            self.draw_mesh()
+#
+#            buffer = glReadPixels(0, 0, self.opts["imsize"], self.opts["imsize"], GL_RGB, GL_UNSIGNED_BYTE)
+#            im = Image.frombytes(mode="RGB", size=(self.opts["imsize"], self.opts["imsize"]), data=buffer)
+#            im = im.transpose(Image.FLIP_TOP_BOTTOM)
+#            im = im.transpose(Image.FLIP_LEFT_RIGHT)
+#
+#            # image.save(os.path.join(self.view_directory, self.name+("_%04d" % self.count_camera)+".png"))
+#            im.save(os.path.join(self.dir_images,"views", self.filename+("_%04d" % self.count_camera)+".png"))
+#
+#            im = np.asarray(im).copy()
+#            im[:,:,0] *= 256*256
+#            im[:,:,1] *= 256
+#            im = im.sum(axis=2)
+#            im -= 1 #we added 1 to handle the background
+#
+#            # save the matrix
+#            np.savez(os.path.join(self.dir_images,"views", self.filename+("_%04d" % self.count_camera)), im)
+#
+#            self.count_camera += 1
+#
+#        self.update()
+#        time.sleep(1)
 
 
 class ViewGeneratorNoDisplay(ViewGeneratorBase):
@@ -248,7 +244,7 @@ class ViewGeneratorNoDisplay(ViewGeneratorBase):
             self.lookAtFromCam(self.cameras[self.count_camera])
 
             # self.draw_points()
-            self.draw_mesh()
+            # self.draw_mesh()
 
             buffer = glReadPixels(0, 0, self.opts["imsize"], self.opts["imsize"], GL_RGB, GL_UNSIGNED_BYTE)
             im = Image.frombytes(mode="RGB", size=(self.opts["imsize"], self.opts["imsize"]), data=buffer)
@@ -269,4 +265,3 @@ class ViewGeneratorNoDisplay(ViewGeneratorBase):
             self.count_camera += 1
 
         self.program_close = True
-        self.close()
