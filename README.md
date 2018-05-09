@@ -15,7 +15,7 @@ You have to install TensorFlow on GPU (we use TF 1.2, cuda 8.0, python 2.7, but 
 
 Get the preprocessed data :
 - Scannet : https://onedrive.live.com/?authkey=%21AHEO5Ik8Hn4Ue2Y&cid=423FEBB4168FD396&id=423FEBB4168FD396%21136&parId=423FEBB4168FD396%21134&action=locate
-- Semantic : ask us
+- Semantic : http://www.semantic3d.net/view_dbase.php?chl=1
 
 ### Citing the original GitHub : 
 
