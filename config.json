@@ -20,7 +20,7 @@
     "test_create_views" : true,
     "test_create_images" : true,
 
-    "vgg_weight_init":"../VGG_ILSVRC_16_layers.npy",
+    "vgg_weight_init":"/home/eleves/Documents/projet_class_3D/Snapnet_git/VGG_ILSVRC_16_layers.npy",
     "batch_size" : 24,
     "learning_rate" : 1e-4,
     "epoch_nbr" : 100,
