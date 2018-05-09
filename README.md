@@ -1,4 +1,4 @@
-# SnapNet: point cloud semantization using deep segmentation network
+# Student fork of SnapNet: point cloud semantization using deep segmentation network
 By Raphaël Ginoulhac (Ecole des Ponts et Chaussées, Paris, 2018).
 
 ## Introduction
