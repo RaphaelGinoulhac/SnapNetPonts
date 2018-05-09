@@ -113,13 +113,19 @@ It is used in the python scripts, to avoid code recopy.
 
 ### Launching the python scripts
 
+Firstly, the name of the input files are hardcoded in most python files : sem3_gen_images.py, sem3d_test_backproj.py. So there is an almost identical file for every dataset, and if you want to adapt Snapnet to another dataset, you should modify those files. The rest of the configuration is self-explanatory in the config.json file.
+
 For the training and testing dataset, the point cloud decimation, views and images generation are called with:
 
     python3 sem3d_gen_images.py --config config.json
+    
+You just have to specify training=true/false in config.json. It is necessary to create the mesh, views and images for the testing phase. 
 
 To train the models (rgb, composite and fusion) from scratch, run:
 
     python3 sem3d_train_tf.py --config config.json
+ 
+This will take 3*number_of_epochs (100 by default), and is also necessary for the testing phase.
 
 The semantic predictions on images and back-projection on the decimated clouds can be called using:
 
