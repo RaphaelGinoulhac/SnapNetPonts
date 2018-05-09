@@ -129,6 +129,7 @@ Finally to generate the files at the Semantic 3D format and assign a label to ea
 
     python3 sem3d_test_to_sem3D_labels.py --config config.json
 
-## Pre-trained models
+## Initial weights
 
-The pre-trained are available [here](https://aboulch.github.io/publication/2017-3DOR-snapnet).
+You should download the weights used here : https://gist.github.com/ksimonyan/211839e770f7b538e2d8
+They are called with "vgg_weights" in the code.
