@@ -116,10 +116,14 @@ It is used in the python scripts, to avoid code recopy.
 For the training and testing dataset, the point cloud decimation, views and images generation are called with:
 
     python3 sem3d_gen_images.py --config config.json
+    
+You just have to specify training=true/false in config.json. It is necessary to create the mesh, views and images for the testing phase. 
 
 To train the models (rgb, composite and fusion) from scratch, run:
 
     python3 sem3d_train_tf.py --config config.json
+ 
+This will take 3*number_of_epochs (100 by default), and is also necessary for the testing phase.
 
 The semantic predictions on images and back-projection on the decimated clouds can be called using:
 
