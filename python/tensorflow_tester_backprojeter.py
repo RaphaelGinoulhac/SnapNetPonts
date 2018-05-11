@@ -174,4 +174,4 @@ class BackProjeter:
         semantizer.remove_unlabeled_points()
 
         # saving the labels
-        semantizer.savePLYFile_labels(os.path.join(save_dir, filename+".ply"))
+        semantizer.savePLYFile_labels(os.path.join(str(save_dir), str(filename)+".ply"))
