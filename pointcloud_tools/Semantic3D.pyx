@@ -99,7 +99,7 @@ cdef class Semantic3D:
         self.sem3d.save_ply_composite(str.encode(filename))
 
     def savePLYFile_labels(self, filename):
-        self.sem3d.save_ply_labels(str.encode(filename))
+        self.sem3d.save_ply_labels(str.encode(str(filename)))
 
     def estimate_normals_hough(self, K):
         self.sem3d.estimate_normals_hough(K)

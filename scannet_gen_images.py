@@ -9,7 +9,7 @@ print("Loading configuration file")
 import argparse
 import json
 parser = argparse.ArgumentParser(description='Semantic3D')
-parser.add_argument('--config', type=str, default="config.json", metavar='N',
+parser.add_argument('--config', type=str, default="config_scannet.json", metavar='N',
 help='config file')
 args = parser.parse_args()
 json_data=open(args.config).read()
@@ -65,7 +65,7 @@ if(config["training"]):
         ]
 else: # testing filename
     filenames = [
-            #"birdfountain_station1_xyz_intensity_rgb",
+            "birdfountain_station1_xyz_intensity_rgb",
             # "castleblatten_station1_intensity_rgb",
             # "castleblatten_station5_xyz_intensity_rgb",
             # "marketplacefeldkirch_station1_intensity_rgb",
@@ -82,6 +82,72 @@ else: # testing filename
             # "stgallencathedral_station6_intensity_rgb"
         ]
 
+
+if create_mesh:
+
+    import pointcloud_tools.lib.python.PcTools as PcTls
+    for filename in filenames:
+        print(filename)
+
+
+        # create the mesher
+        semantizer = PcTls.Semantic3D()
+        semantizer.set_voxel_size(voxel_size)
+
+        #loading data and voxelization
+        print("  -- loading data")
+        if config["training"]:
+            semantizer.load_Sem3D_labels(os.path.join(input_dir,filename+".txt").encode('utf_8'),
+                os.path.join(input_dir,filename+".labels").encode('utf-8'))
+        else:
+            semantizer.load_Sem3D(os.path.join(input_dir,filename+".txt").encode('utf-8'))
+
+        # estimate normals
+        print("  -- estimating normals")
+        semantizer.estimate_normals_regression(100)
+
+        print("  -- estimating noise")
+        semantizer.estimate_noise_radius(1.)
+
+        print("  -- estimating Z orient")
+        semantizer.estimate_z_orient()
+
+        #save points and labels
+        print("  -- saving plys")
+        semantizer.savePLYFile(os.path.join(voxels_directory,filename+"_points.ply").encode('utf-8'))
+        semantizer.savePLYFile_composite(os.path.join(voxels_directory,filename+"_composite.ply").encode('utf-8'))
+        if config["training"]:
+            semantizer.savePLYFile_labels(os.path.join(voxels_directory,filename+"_labels.ply").encode('utf-8'))
+
+        print("  -- building mesh")
+        semantizer.build_mesh(False)
+        semantizer.save_mesh(os.path.join(voxels_directory,filename+"_mesh.ply").encode('utf-8'))
+        semantizer.save_mesh_composite(os.path.join(voxels_directory,filename+"_mesh_composite.ply").encode('utf-8'))
+        if config["training"]:
+            semantizer.save_mesh_labels(os.path.join(voxels_directory,filename+"_mesh_labels.ply").encode('utf-8'))
+
+        print("  -- extracting vertices")
+        vertices = semantizer.get_vertices_numpy()
+        np.savez(os.path.join(voxels_directory,filename+"_vertices").encode('utf_8'), vertices)
+        print("  -- extracting normals")
+        normals = semantizer.get_normals_numpy()
+        np.savez(os.path.join(voxels_directory,filename+"_normals").encode('utf_8'), normals)
+        print("  -- extracting faces")
+        faces = semantizer.get_faces_numpy()
+        np.savez(os.path.join(voxels_directory,filename+"_faces").encode('utf_8'), faces)
+        print("  -- extracting colors")
+        colors = semantizer.get_colors_numpy()
+        np.savez(os.path.join(voxels_directory,filename+"_colors").encode('utf_8'), colors)
+        print("  -- extracting composite")
+        composite = semantizer.get_composite_numpy()
+        np.savez(os.path.join(voxels_directory,filename+"_composite").encode('utf_8'), composite)
+        if config["training"]:
+            print("  -- extracting labels")
+            labels = semantizer.get_labels_numpy()
+            np.savez(os.path.join(voxels_directory,filename+"_labels").encode('utf_8'), labels)
+            print("  -- extracting labels colors")
+            labelsColors = semantizer.get_labelsColors_numpy()
+            np.savez(os.path.join(voxels_directory,filename+"_labelsColors").encode('utf_8'), labelsColors)
 
 """ commented out ViewGeneratorLauncher """
 if create_views:

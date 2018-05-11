@@ -1,8 +1,8 @@
 {
-    "train_input_dir":"/home/eleves/Documents/projet_class_3D/data_semantic-8",
-    "test_input_dir":"/home/eleves/Documents/projet_class_3D/data_semantic-8",
-    "train_results_root_dir":"training_products",
-    "test_results_root_dir":"test_products",
+    "train_input_dir":"/home/eleves/Documents/projet_class_3D/data/scannet_data_pointnet2",
+    "test_input_dir":"/home/eleves/Documents/projet_class_3D/data/scannet_data_pointnet2",
+    "train_results_root_dir":"training_products_scannet",
+    "test_results_root_dir":"test_products_scannet",
     "images_dir":"images",
 
     "training": true,
@@ -31,8 +31,8 @@
     "train_composite" : true,
     "train_fusion" : true,
 
-    "saver_directory_rgb" : "path_to_rgb_model_directory",
-    "saver_directory_composite" : "path_to_composite_model_directory",
-    "saver_directory_fusion" : "path_to_fusion_model_directory",
-    "output_directory":"path_to_output_product_directory"
+    "saver_directory_rgb" : "scannet_rgb_model_directory",
+    "saver_directory_composite" : "scannet_composite_model_directory",
+    "saver_directory_fusion" : "scannet_fusion_model_directory",
+    "output_directory":"scannet_output_product_directory"
 }

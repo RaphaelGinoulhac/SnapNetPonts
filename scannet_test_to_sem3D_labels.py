@@ -13,7 +13,7 @@ from python.Semantic3D import Sem3D
 print("Loading configuration file")
 import argparse
 parser = argparse.ArgumentParser(description='Semantic3D')
-parser.add_argument('--config', type=str, default="config.json", metavar='N',
+parser.add_argument('--config', type=str, default="config_scannet.json", metavar='N',
 help='config file')
 args = parser.parse_args()
 json_data=open(args.config).read()
