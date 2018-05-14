@@ -23,23 +23,7 @@ input_dir = config["test_input_dir"]
 voxel_size = config["voxel_size"]
 output_dir = config["output_directory"]
 
-filenames = [
-        "birdfountain_station1_xyz_intensity_rgb",
-        # "castleblatten_station1_intensity_rgb",
-        # "castleblatten_station5_xyz_intensity_rgb",
-        # "marketplacefeldkirch_station1_intensity_rgb",
-        # "marketplacefeldkirch_station4_intensity_rgb",
-        # "marketplacefeldkirch_station7_intensity_rgb",
-        # "sg27_station10_intensity_rgb",
-        # "sg27_station3_intensity_rgb",
-        # "sg27_station6_intensity_rgb",
-        # "sg27_station8_intensity_rgb",
-        # "sg28_station2_intensity_rgb",
-        # "sg28_station5_xyz_intensity_rgb",
-        # "stgallencathedral_station1_intensity_rgb",
-        # "stgallencathedral_station3_intensity_rgb",
-        # "stgallencathedral_station6_intensity_rgb"
-    ]
+filenames = ["scene_test_" + str(j) for j in range(312)]
 
 # create outpu directory
 if not os.path.exists(output_dir):
