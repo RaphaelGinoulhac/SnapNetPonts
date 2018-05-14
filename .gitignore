@@ -1,3 +1,12 @@
 training_products/
-path_to_composite_model_directory/
-path_to_rgb_model_directory/
+test_products/
+sem3d_rgb_model/
+sem3d_composite_model/
+sem3d_fusion_model/
+sem3d_output_product/
+training_products_scannet/
+test_products_scannet/
+scannet_rgb_model/
+scannet_composite_model/
+scannet_fusion_model/
+scannet_output_product/
