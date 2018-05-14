@@ -24,15 +24,15 @@
     "batch_size" : 24,
     "learning_rate" : 1e-4,
     "epoch_nbr" : 100,
-    "label_nbr" : 10,
+    "label_nbr" : 21,
     "input_ch" : 3,
 
     "train_rgb" : true,
     "train_composite" : true,
     "train_fusion" : true,
 
-    "saver_directory_rgb" : "scannet_rgb_model_directory",
-    "saver_directory_composite" : "scannet_composite_model_directory",
-    "saver_directory_fusion" : "scannet_fusion_model_directory",
-    "output_directory":"scannet_output_product_directory"
+    "saver_directory_rgb" : "scannet_rgb_model",
+    "saver_directory_composite" : "scannet_composite_model",
+    "saver_directory_fusion" : "scannet_fusion_model",
+    "output_directory":"scannet_output_product"
 }

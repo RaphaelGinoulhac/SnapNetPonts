@@ -24,15 +24,15 @@
     "batch_size" : 24,
     "learning_rate" : 1e-4,
     "epoch_nbr" : 100,
-    "label_nbr" : 10,
+    "label_nbr" : 9,
     "input_ch" : 3,
 
     "train_rgb" : true,
     "train_composite" : true,
     "train_fusion" : true,
 
-    "saver_directory_rgb" : "path_to_rgb_model_directory",
-    "saver_directory_composite" : "path_to_composite_model_directory",
-    "saver_directory_fusion" : "path_to_fusion_model_directory",
-    "output_directory":"path_to_output_product_directory"
+    "saver_directory_rgb" : "sem3d_rgb_model",
+    "saver_directory_composite" : "sem3d_composite_model",
+    "saver_directory_fusion" : "sem3d_fusion_model",
+    "output_directory":"sem3d_output_product"
 }
