@@ -25,11 +25,15 @@ with open(filenametest, 'rb') as fp:
 
 
 print(len(scene_points_list_train))
+print(len(scene_points_list_test))
 
 #for each scene, we save it to a .txt in the same folder as the pickle files
+#there are 1201 train scenes! 
 for i in range(len(scene_points_list_train)):
     np.savetxt(data_path+"/scene_train_"+ str(i)+".txt",scene_points_list_train[i])
-    np.savetxt(data_path+"/scene_test_" + str(i)+".txt", scene_points_list_test[i])
     np.savetxt(data_path+"/labels_train_" + str(i)+".txt", semantic_labels_list_train[i])
-    np.savetxt(data_path+"/labels_test_" + str(i)+".txt", semantic_labels_list_test[i])
 
+
+for j in range(len(scene_points_list_test)):
+    np.savetxt(data_path+"/scene_test_" + str(j)+".txt", scene_points_list_test[j])
+    np.savetxt(data_path + "/labels_test_" + str(j) + ".txt", semantic_labels_list_test[j])
