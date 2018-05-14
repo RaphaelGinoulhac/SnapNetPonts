@@ -24,7 +24,13 @@ voxel_size = config["voxel_size"]
 output_dir = config["output_directory"]
 
 filenames = [
-        "birdfountain_station1_xyz_intensity_rgb",
+         "sg27_station4_intensity_rgb",
+         "sg27_station5_intensity_rgb",
+         "sg27_station9_intensity_rgb",
+         "sg28_station4_intensity_rgb",
+         "untermaederbrunnen_station1_xyz_intensity_rgb",
+         "untermaederbrunnen_station3_xyz_intensity_rgb"
+        #"birdfountain_station1_xyz_intensity_rgb",
         # "castleblatten_station1_intensity_rgb",
         # "castleblatten_station5_xyz_intensity_rgb",
         # "marketplacefeldkirch_station1_intensity_rgb",

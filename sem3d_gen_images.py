@@ -56,31 +56,37 @@ if(config["training"]):
          "neugasse_station1_xyz_intensity_rgb",
          "sg27_station1_intensity_rgb",
          "sg27_station2_intensity_rgb",
-         "sg27_station4_intensity_rgb",
-         "sg27_station5_intensity_rgb",
-         "sg27_station9_intensity_rgb",
-         "sg28_station4_intensity_rgb",
-         "untermaederbrunnen_station1_xyz_intensity_rgb",
-         "untermaederbrunnen_station3_xyz_intensity_rgb"
+         #"sg27_station4_intensity_rgb",
+         #"sg27_station5_intensity_rgb",
+         #"sg27_station9_intensity_rgb",
+         #"sg28_station4_intensity_rgb",
+         #"untermaederbrunnen_station1_xyz_intensity_rgb",
+         #"untermaederbrunnen_station3_xyz_intensity_rgb"
         ]
 else: # testing filename
     filenames = [
-            "birdfountain_station1_xyz_intensity_rgb",
-            # "castleblatten_station1_intensity_rgb",
-            # "castleblatten_station5_xyz_intensity_rgb",
-            # "marketplacefeldkirch_station1_intensity_rgb",
-            # "marketplacefeldkirch_station4_intensity_rgb",
-            # "marketplacefeldkirch_station7_intensity_rgb",
-            # "sg27_station10_intensity_rgb",
-            # "sg27_station3_intensity_rgb",
-            # "sg27_station6_intensity_rgb",
-            # "sg27_station8_intensity_rgb",
-            # "sg28_station2_intensity_rgb",
-            # "sg28_station5_xyz_intensity_rgb",
-            # "stgallencathedral_station1_intensity_rgb",
-            # "stgallencathedral_station3_intensity_rgb",
-            # "stgallencathedral_station6_intensity_rgb"
-        ]
+        "sg27_station4_intensity_rgb",
+        "sg27_station5_intensity_rgb",
+        "sg27_station9_intensity_rgb",
+        "sg28_station4_intensity_rgb",
+        "untermaederbrunnen_station1_xyz_intensity_rgb",
+        "untermaederbrunnen_station3_xyz_intensity_rgb"
+        # "birdfountain_station1_xyz_intensity_rgb",
+        # "castleblatten_station1_intensity_rgb",
+        # "castleblatten_station5_xyz_intensity_rgb",
+        # "marketplacefeldkirch_station1_intensity_rgb",
+        # "marketplacefeldkirch_station4_intensity_rgb",
+        # "marketplacefeldkirch_station7_intensity_rgb",
+        # "sg27_station10_intensity_rgb",
+        # "sg27_station3_intensity_rgb",
+        # "sg27_station6_intensity_rgb",
+        # "sg27_station8_intensity_rgb",
+        # "sg28_station2_intensity_rgb",
+        # "sg28_station5_xyz_intensity_rgb",
+        # "stgallencathedral_station1_intensity_rgb",
+        # "stgallencathedral_station3_intensity_rgb",
+        # "stgallencathedral_station6_intensity_rgb"
+    ]
 
 
 if create_mesh:
