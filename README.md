@@ -113,7 +113,7 @@ It is used in the python scripts, to avoid code recopy.
 
 ### Launching the python scripts
 
-Firstly, the name of the input files are hardcoded in most python files : sem3_gen_images.py, sem3d_test_backproj.py. So there is an almost identical file for every dataset, and if you want to adapt Snapnet to another dataset, you should modify those files. The rest of the configuration is self-explanatory in the config.json file.
+Firstly, the name of the input files are hardcoded in some python files : sem3_gen_images.py (both train and test set), sem3d_test_backproj.py and sem3d_test_to_sem3D_labels.py (test set for those two). If you want to adapt Snapnet to another dataset, you should modify those files. Consider that the load functions are coded in C++ and it may be hard to modify them, so you should transform your dataset in filename.txt and filename.labels ; and then hardcode those filenames. The rest of the configuration is self-explanatory in the config.json file.
 
 For the training and testing dataset, the point cloud decimation, views and images generation are called with:
 
