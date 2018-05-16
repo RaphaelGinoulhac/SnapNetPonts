@@ -89,6 +89,8 @@ for filename in filenames:
         variable_scope1="rgb",
         variable_scope2="composite",
         variable_scope_fusion="fusion")
-
+    print ("test1")
     backproj.saveScores(os.path.join(save_dir, filename+"_scores"))
+    print ("test2")
     backproj.createLabelPLY(filename, dir_data=voxels_directory, save_dir=save_dir)
+    print ("test3")
