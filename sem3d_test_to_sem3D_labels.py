@@ -5,7 +5,7 @@ from tqdm import *
 import json
 #limit to a single GPU
 os.environ["CUDA_DEVICE_ORDER"]="PCI_BUS_ID"   # see issue #152
-os.environ["CUDA_VISIBLE_DEVICES"]="2"
+os.environ["CUDA_VISIBLE_DEVICES"]="3"
 
 from python.Semantic3D import Sem3D
 

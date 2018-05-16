@@ -9,7 +9,7 @@ import shutil
 import json
 #limit to only one GPU
 os.environ["CUDA_DEVICE_ORDER"]="PCI_BUS_ID"   # see issue #152
-os.environ["CUDA_VISIBLE_DEVICES"]="2"
+os.environ["CUDA_VISIBLE_DEVICES"]="3"
 
 from python.tensorflow_tester_backprojeter import BackProjeter
 import python.models.tensorflow_unet as model
