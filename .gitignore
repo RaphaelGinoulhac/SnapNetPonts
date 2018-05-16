@@ -9,6 +9,4 @@ scannet_composite_model/
 scannet_fusion_model/
 scannet_output_product/
 training_products/
-test_products/voxels/
-test_products/images/*.p
-test_products/images/views/
+test_products/
