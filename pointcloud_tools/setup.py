@@ -7,7 +7,7 @@ pcl_include_dir = "/usr/include/pcl-1.7"
 pcl_lib_dir = "/usr/local/lib"
 vtk_include_dir = "/usr/include/vtk-6.2"
 eigen_include_dir = "/usr/include/eigen3"
-flann_include_dir = "usr/include/mrpt/base/include/mrpt/otherlibs/nanoflann"
+flann_include_dir = "/home/eleves/Documents/nanoflann"
 
 # depending on the distribution, change the directory according to the installed version
 # example for stock ubuntu 16.04:
