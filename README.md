@@ -63,7 +63,7 @@ To generate the C++/Python library.
 
 It will build the library.
 
-**Note**: in the ```setup.py```, we have filled the path with the standard path for PCL installation libraries and headers on Ubuntu 16.04.
+**Note**: in the ```setup.py```, we have filled the path with the standard path for PCL installation libraries and headers on Ubuntu 16.04. It is hardcoded, you need to modify the paths in setup.py if the libraries are elsewhere on your computer.
 
 ### Configuration file
 
@@ -119,7 +119,21 @@ For the training and testing dataset, the point cloud decimation, views and imag
 
     python3 sem3d_gen_images.py --config config.json
     
-You just have to specify training=true/false in config.json. It is necessary to create the mesh, views and images for the testing phase. 
+If you're getting an error like : 
+    Not enough neighbors are considered: ffn or sfn out of range! Consider increasing nnn... Setting R=426 to be BOUNDA RY!
+    Not enough neighbors are considered: source of R=792 is out of range! Consider increasing nnn...
+    Number of neighborhood size increase requests for fringe neighbors: 2117
+    Number of neighborhood size increase requests for source: 278
+    
+go in both PointCloud.cxx and PointCloudLabels.cxx that are in pointcloud_tools/, and change 
+    gp3.setMaximumNearestNeighbors (300);
+with the value you need. Then execute setup.py to compile the C++ code.
+    
+You just have to specify training=true/false in config.json. It is necessary to create the mesh, views and images for the testing phase.
+
+Further more, you need a display to generate the images with Qt, so if you're using a SSH connection like me, you should execute :
+    DISPLAY:=0 python3 sem3d_gen_images.py --config config.json
+This will redirect the display and the program will work.
 
 To train the models (rgb, composite and fusion) from scratch, run:
 
