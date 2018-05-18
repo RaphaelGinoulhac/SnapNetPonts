@@ -10,3 +10,6 @@ scannet_fusion_model/
 scannet_output_product/
 training_products/
 test_products/
+pointcloud_tools/build
+*.so
+*.o
