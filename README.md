@@ -127,7 +127,7 @@ If you're getting an error like :
     
 go in both PointCloud.cxx and PointCloudLabels.cxx that are in pointcloud_tools/, and change 
     gp3.setMaximumNearestNeighbors (300);
-with the value you need.
+with the value you need. Then execute setup.py to compile the C++ code.
     
 You just have to specify training=true/false in config.json. It is necessary to create the mesh, views and images for the testing phase.
 
