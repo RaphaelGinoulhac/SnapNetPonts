@@ -155,13 +155,34 @@ if create_mesh:
             labelsColors = semantizer.get_labelsColors_numpy()
             np.savez(os.path.join(voxels_directory,filename+"_labelsColors").encode('utf_8'), labelsColors)
 
-""" commented out ViewGeneratorLauncher """
+# """ commented out ViewGeneratorLauncher """
+# if create_views:
+#
+#     # from python.viewGenerator import ViewGeneratorLauncher
+#     from python.viewGenerator import ViewGeneratorNoDisplay as ViewGenerator
+#
+#     # launcher = ViewGeneratorLauncher()
+#
+#     for filename in filenames:
+#         print(filename)
+#         view_gen = ViewGenerator()
+#         view_gen.initialize_acquisition(
+#                 directory,
+#                 image_directory,
+#                 filename
+#             )
+#         view_gen.set_camera_generator(ViewGenerator.cam_generator_random_vertical_cone)
+#         view_gen.opts["imsize"]= imsize
+#         view_gen.generate_cameras_scales(cam_number, distances=[5,10,20])
+#         view_gen.paintGL()
+#         # launcher.launch(view_gen)
+
 if create_views:
 
-    # from python.viewGenerator import ViewGeneratorLauncher
+    from python.viewGenerator import ViewGeneratorLauncher
     from python.viewGenerator import ViewGeneratorNoDisplay as ViewGenerator
 
-    # launcher = ViewGeneratorLauncher()
+    launcher = ViewGeneratorLauncher()
 
     for filename in filenames:
         print(filename)
@@ -174,9 +195,8 @@ if create_views:
         view_gen.set_camera_generator(ViewGenerator.cam_generator_random_vertical_cone)
         view_gen.opts["imsize"]= imsize
         view_gen.generate_cameras_scales(cam_number, distances=[5,10,20])
-        view_gen.paintGL()
-        # launcher.launch(view_gen)
-
+        view_gen.init()
+        launcher.launch(view_gen)
 
 if create_images:
     from python.imageGenerator import ImageGenerator
