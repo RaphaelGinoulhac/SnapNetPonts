@@ -5,7 +5,7 @@
     "test_results_root_dir":"test_products",
     "images_dir":"images",
 
-    "training": false,
+    "training": true,
 
     "imsize":224,
     "voxel_size":0.1,
