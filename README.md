@@ -153,3 +153,17 @@ Finally to generate the files at the Semantic 3D format and assign a label to ea
 
 You should download the weights used here : https://gist.github.com/ksimonyan/211839e770f7b538e2d8
 They are called with "vgg_weights" in the code.
+
+##Information
+
+name: 16-layer model from the arXiv paper: "Very Deep Convolutional Networks for Large-Scale Image Recognition"
+
+caffemodel: VGG_ILSVRC_16_layers
+
+caffemodel_url: http://www.robots.ox.ac.uk/~vgg/software/very_deep/caffe/VGG_ILSVRC_16_layers.caffemodel
+
+license: see http://www.robots.ox.ac.uk/~vgg/research/very_deep/
+
+caffe_version: trained using a custom Caffe-based framework
+
+gist_id: 211839e770f7b538e2d8
